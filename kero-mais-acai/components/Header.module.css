@@ -1,0 +1,156 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #660273; /* Roxo escuro da sua paleta */
+    padding: 10px 20px;
+    position: relative;
+}
+
+.logo {
+    height: 50px; /* Ajuste conforme o tamanho da sua logo */
+}
+
+.nav, .modal .nav {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.link, .cta {
+    margin: 0 10px;
+    color: #F2F2F2; /* Branco */
+    text-decoration: none;
+}
+
+.cta {
+    padding: 10px 20px;
+    background-color: #C7D943; /* Verde da sua paleta */
+    color: #660273; /* Roxo escuro para o texto */
+    border-radius: 5px;
+}
+
+.menuToggle {
+    display: none; /* A caixa de seleção é visualmente oculta */
+}
+
+.menuIcon {
+    display: none; /* O ícone de menu é escondido inicialmente */
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 24px;
+    z-index: 101; /* Mais alto que o modal para permanecer visível */
+}
+
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    z-index: 100; /* Garante que fique acima de outros elementos */
+    transition: opacity 0.5s ease; /* Suaviza a transição do fundo */
+}
+
+.modal .nav {
+    background-color: #660273;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%; /* Ajuste a largura conforme desejado */
+    height: 100%;
+    padding: 20px;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.5s ease; /* Animação suave para o deslize */
+}
+
+.menuToggle:checked ~ .modal {
+    display: block;
+    opacity: 1; /* Totalmente visível quando aberto */
+}
+
+.menuToggle:checked ~ .modal .nav {
+    transform: translateX(0%); /* Desliza para dentro da tela quando o menu é aberto */
+}
+
+@media (max-width: 768px) {
+    .menuIcon {
+        display: block;
+    }
+
+    .nav, .cta {
+        display: none; /* Esconde os links e o botão CTA inicialmente */
+    }
+
+
+    .header {
+        flex-direction: column; /* Empilha os elementos verticalmente */
+        align-items: center; /* Centraliza horizontalmente */
+    }
+
+    .menuIcon {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 24px;
+    }
+
+    .menuIcon span {
+        display: block;
+        background-color: #F2F2F2; /* Cor branca para as linhas do hambúrguer */
+        height: 3px;
+        margin: 5px 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menuToggle:checked ~ .menuIcon span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menuToggle:checked ~ .menuIcon span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menuToggle:checked ~ .menuIcon span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .menuToggle:checked ~ .modal, .menuToggle:checked ~ .nav {
+        display: flex; /* Exibido quando o menu é aberto */
+    }
+
+    .nav, .cta {
+        display: none; /* Esconde os links e o botão CTA inicialmente */
+    }
+
+    .modal {
+        display: none; /* Escondido por padrão */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+        z-index: 100; /* Garante que fique acima de outros elementos */
+    }
+
+    .modal .nav {
+        background-color: #660273;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80%; /* Ajuste a largura conforme desejado */
+        height: 100%;
+        padding: 20px;
+        flex-direction: column;
+    }
+}
