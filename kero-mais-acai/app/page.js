@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <>
       <Header />
-      {/* Outros componentes da página aqui */}
+      
     </>
   );
 }
